@@ -5,7 +5,7 @@ title: 关于我
 
 > Hello 陌生人，欢迎访问 aoeivu Blog
 
-该博客托管于 
+该博客托管于 GitHub
 
 喜欢本博客的欢迎**添加友链**，在[留言板](chat.html)留言即可
 

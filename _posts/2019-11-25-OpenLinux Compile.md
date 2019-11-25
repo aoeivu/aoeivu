@@ -28,7 +28,6 @@ tar -jvxf sdk.tar.bzx
 /ql-ol-sdk/ql-ol-rootfs/etc/data/mobileap_cfg.xml文件中的0改为1
 <MobileAPEnableAtBootup>1<MobileAPEnableAtBootup>
 ```
-
 # 编译过程
 1. 用source命令初始化编译环境
 ```

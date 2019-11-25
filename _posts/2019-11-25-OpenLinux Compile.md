@@ -38,6 +38,7 @@ source /ql-ol-sdk/ql-ol-crosstool/ql-ol-crosstool-env-init
 make extsdk
 ```
 编译完成后将完成的可执行文件，拷贝到/ql-ol-sdk/ql-ol-rootfs/usr/bin/下面
+
 3. 在SDK, /ql-ol-sdk路径下编译内核
 ```
 make rootfs

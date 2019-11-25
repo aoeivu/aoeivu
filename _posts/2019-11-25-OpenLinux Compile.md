@@ -50,6 +50,7 @@ make kernel_menuconfig
 ![make kernel_menuconfig](https://github.com/aoeivu/aoeivu.github.io/tree/master/posts/2019/11/25/makekernel_menuconfig.jpg)
 此处光标处首先空格取消星号，然后空格添加星号，右键选择Exit，在弹出的框中选择Yes
 若不弹窗，则不正确
+
 5. 在SDK, /ql-ol-sdk路径下编译kernel
 ```
 make kernel

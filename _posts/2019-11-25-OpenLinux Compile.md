@@ -23,7 +23,9 @@ sudo apt-get install gcc-4.8
 ```
 tar -jvxf sdk.tar.bzx
 ```
-2. 设置将/ql-ol-sdk/ql-ol-rootfs/etc/data/mobileap_cfg.xml文件中的0改为1
+2. 设置将/ql-ol-sdk/ql-ol-rootfs/etc/data/mobileap_cfg.xml文件中
+MobileAPEnableAtBootup的0改为1
+
 
 # 编译过程
 1. 用source命令初始化编译环境

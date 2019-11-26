@@ -24,9 +24,6 @@ sudo apt-get install gcc-4.8
 tar -jvxf sdk.tar.bzx
 ```
 2. 设置将/ql-ol-sdk/ql-ol-rootfs/etc/data/mobileap_cfg.xml文件中的0改为1
-```
-<MobileAPEnableAtBootup>1<MobileAPEnableAtBootup>
-```
 
 # 编译过程
 1. 用source命令初始化编译环境
@@ -49,7 +46,6 @@ make kernel_menuconfig
 ![make kernel_menuconfig](https://github.com/aoeivu/aoeivu.github.io/blob/master/posts/2019/11/25/makekernel_menuconfig.jpg?raw=true)
 此处光标处首先空格取消星号，然后空格添加星号，右键选择Exit，在弹出的框中选择Yes
 若不弹窗，则不正确
-
 5. 在SDK, /ql-ol-sdk路径下编译kernel
 ```
 make kernel

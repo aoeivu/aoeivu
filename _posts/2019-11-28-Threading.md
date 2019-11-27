@@ -5,8 +5,7 @@ categories: [Python]
 ---
 
 # 创建一个线程
-1.  最简单的一个线程  
-
+1. 最简单的一个线程  
 ```python
 from threading import Thread
 
@@ -24,7 +23,6 @@ if __name__ == '__main__':
 # 0,1,2,3...
 ```
 2. 继承Thread创建一个线程  
-
 ```python
 from threading import Thread
 
@@ -46,10 +44,10 @@ if __name__ == '__main__':
 # 运行结果：
 # 0,1,2,3...
 ```
-3.  关于thread.join()方法  
+3. 关于thread.join()方法  
 阻塞当前线程，待当前线程结束后再往下执行  
-3.1 主线程和一个子线程  
 
+主线程和一个子线程  
 ```python
 import time
 from threading import Thread
@@ -69,8 +67,8 @@ if __name__ == '__main__':
 
 # 运行结果 1,2,3,4,5...hhh
 ```
-3.2 两个线程顺序执行  
 
+两个线程顺序执行  
 ```python
 import time
 from threading import Thread
@@ -99,12 +97,11 @@ if __name__ == '__main__':
 
 # 运行结果0,1,2,3,4,5,6,7,8,9,10,9,8....
 ```
-4.  setDamon(True)  
+4. setDamon(True)  
 setDamon值默认为False，当setDamon=True的时候，不管子线程有没有结束，只要主线程结束了，子线程就结束  
 注意:  
 a. setDamon=True必须放在start()函数之前  
 b. setDamon=True既可以写t.setDamon(True),也可以Thread(target=count, daemon=True)  
-
 ```python
 import time
 from threading import Thread
@@ -124,8 +121,7 @@ if __name__ == '__main__':
     time.sleep(2)
     print('主线程结束，子线程结束')
 ```
-5.  conclusion  
-
+5. conclusion  
 ```python
 t = Thread(target=func, args=(1, 2))  # func不可包含()，args为turple类型
 t.start()  # 开始一个子线程

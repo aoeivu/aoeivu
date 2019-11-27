@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
 3.  关于thread.join()方法  
 阻塞当前线程，待当前线程结束后再往下执行  
-a. 主线程和一个子线程  
+*  主线程和一个子线程  
 
 ```python
 import time
@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
 # 运行结果 1,2,3,4,5...hhh
 ```
-b. 两个线程顺序执行  
+*  两个线程顺序执行  
 
 ```python
 import time

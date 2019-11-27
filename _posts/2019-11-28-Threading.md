@@ -23,8 +23,7 @@ if __name__ == '__main__':
 # 运行结果：
 # 0,1,2,3...
 ```
-
-2.  继承Thread创建一个线程  
+2. 继承Thread创建一个线程  
 
 ```python
 from threading import Thread
@@ -47,10 +46,9 @@ if __name__ == '__main__':
 # 运行结果：
 # 0,1,2,3...
 ```
-
 3.  关于thread.join()方法  
 阻塞当前线程，待当前线程结束后再往下执行  
-*  主线程和一个子线程  
+3.1 主线程和一个子线程  
 
 ```python
 import time
@@ -71,7 +69,7 @@ if __name__ == '__main__':
 
 # 运行结果 1,2,3,4,5...hhh
 ```
-*  两个线程顺序执行  
+3.2 两个线程顺序执行  
 
 ```python
 import time
@@ -101,7 +99,6 @@ if __name__ == '__main__':
 
 # 运行结果0,1,2,3,4,5,6,7,8,9,10,9,8....
 ```
-
 4.  setDamon(True)  
 setDamon值默认为False，当setDamon=True的时候，不管子线程有没有结束，只要主线程结束了，子线程就结束  
 注意:  
@@ -127,7 +124,6 @@ if __name__ == '__main__':
     time.sleep(2)
     print('主线程结束，子线程结束')
 ```
-
 5.  conclusion  
 
 ```python

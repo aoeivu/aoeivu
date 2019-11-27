@@ -9,11 +9,9 @@ categories: [Python]
 ```
 from threading import Thread
 
-
 def count():
     for i in range(10):
         print(i)
-
 
 if __name__ == '__main__':
     t = Thread(target=count)

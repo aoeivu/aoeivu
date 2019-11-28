@@ -104,7 +104,7 @@ categories: [Python]
     # 运行结果0,1,2,3,4,5,6,7,8,9,10,9,8....
     ```
 
-1. setDamon(True)  
+4. setDamon(True)  
 setDamon值默认为False，当setDamon=True的时候，不管子线程有没有结束，只要主线程结束了，子线程就结束  
 注意:  
 a. setDamon=True必须放在start()函数之前  

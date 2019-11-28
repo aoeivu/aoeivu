@@ -144,7 +144,7 @@ categories: [Python]
 # Lock()
 
 1. Lock简介  
-    Lock：当不同的线程会对同一个变量进行操作的时候，如果不能正确控制先后的顺序，则可能会导致变量的值造成不可预估的错误。  
+    Lock：当不同的线程会对同一个变量进行操作的时候，如果不能正确控制先后的顺序，则可能会导致变量的值造成不可预测的错误。  
 
     Lock有以下两种方法：  
 
@@ -260,10 +260,76 @@ categories: [Python]
     # RuntimeError: release unlocked lock
     ```
 
-4. 总结
+4. 总结  
     a. 锁有两种状态，`locked`(被某个线程拿到)和`unlocked`状态(锁被释放可使用);  
     b. 锁的操作方法是`acquire`和`release`;  
     c. 如果状态是`unlocked`，调用`acquire`会将锁的状态改为`locked`;  
     d. 如果状态是`unlocked`，调用`release`会导致`RuntimeError`;  
     e. 如果状态是`locked`，调用`acquire`会导致`死锁`;  
     f. 如果状态是`locked`，调用`release`会将锁的状态改为`unlocked`  
+
+# RLocd()
+1. RLock简介  
+   `RLock`在同一个线程中，首先获取锁，在此线程中需要再次使用锁的时候不会造成死锁  
+   RLock和Lock具有同样的方法  
+    ```python
+    from threading import RLock
+
+    lock = RLock()
+    lock.acquire()  # 获取锁
+    lock.release()  # 释放锁
+
+    ```
+   
+2. RLock特点  
+   a. 谁拿到谁释放。如果线程A拿到锁，线程B无法释放这个锁，只有A可以释放;  
+   b. 同一线程可以多次拿到该锁，即可以acquire多次；
+   c. acquire多少次就必须release多少次，只有最后一次release才能改变RLock的状态为unlocked
+
+3. RLock示例
+    a. 使用`Lock`会卡死
+    
+    ```python
+    from threading import RLock, Thread, Lock
+
+
+    def count():
+        global lock, num
+        with lock:  # 获取锁
+            for i in range(num):
+                print(i)
+                with lock:  # 再次获取锁
+                    pass
+
+
+    if __name__ == '__main__':
+        num = 10
+        lock = Lock()
+        t = Thread(target=count)
+        t.start()
+    ```
+
+    b. 使用`RLock`则可正常运行
+    
+    ```python
+    from threading import RLock, Thread, Lock
+
+
+    def count():
+        global lock, num
+        with lock:  # 获取锁
+            for i in range(num):
+                print(i)
+                with lock:  # 再次获取锁
+                    pass
+
+
+    if __name__ == '__main__':
+        num = 10
+        lock = RLock()
+        t = Thread(target=count)
+        t.start()
+    ```
+
+4. RLock理解  
+在同一线程里，RLock只是放松了锁的获取，其他根Lock没有其他不同

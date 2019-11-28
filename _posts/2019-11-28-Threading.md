@@ -49,8 +49,10 @@ categories: [Python]
     ```
 
 3. 关于thread.join()方法  
-阻塞当前线程，待当前线程结束后再往下执行主线程或者另一个子线程  
-   1.  子线程阻塞，待子线程执行完毕后再继续主线程
+阻塞当前线程，待当前线程结束后再往下执行  
+主线程或者另一个子线程  
+
+   1.  
 
     ```python
     import time
@@ -71,7 +73,7 @@ categories: [Python]
 
     # 运行结果 1,2,3,4,5...hhh
     ```
-    2.子线程依次阻塞顺序执行
+    2.
 
     ```python
     import time
@@ -138,3 +140,103 @@ b. setDamon=True既可以写t.setDamon(True),也可以Thread(target=count, daemo
     t.name = 'MyThread'  # 给当前线程命名
     t.getName()  # 获取当前线程名称
     ```
+
+# Lock()
+
+## Lock简介
+Lock：当不同的线程会对同一个变量进行操作的时候，如果不能正确控制先后的顺序，则可能会导致变量的值造成不可预估的错误。  
+
+Lock有以下两种方法：  
+
+```python
+from threading import Lock
+
+lock = Lock()
+lock.acquire()  # 获取锁
+lock.release()  # 释放锁
+```
+
+当有两个线程同时运行时，假设一个变量 X 首先需要被函数A处理，然后再递交给函数B处理，则：  
+1.  在A中首先获取锁lock.acquire()，待A函数处理完成后lock.release()释放锁
+2.  B函数获取A函数释放的锁lock.acquire()，B函数使用完成后释放锁
+
+## 示例  
+1.  没有使用锁
+
+    ```python
+    from threading import Thread
+
+
+    def lock_test_1():
+        global variable
+        for _ in range(10):
+            variable += 1
+            print(variable)
+
+
+    def lock_test_2():
+        global variable
+        for i in range(10):
+            variable += 10
+            print(variable)
+
+
+    if __name__ == '__main__':
+        variable = 0
+        threads = []
+        t1 = Thread(target=lock_test_1)
+        t2 = Thread(target=lock_test_2)
+        threads.append(t1)
+        threads.append(t2)
+        for thread in threads:
+            thread.start()
+
+    # 只要运行足够多的次数，运行的结果就会不一样
+    # 期望结果 1，2，3，4，5，6，7，8，9，10，20，30...
+    # 实际可能结果 1，11，12...
+    ```
+
+    2. 使用锁后
+
+    ```python
+    import time
+    from threading import Thread, Lock
+
+
+    def lock_test_1():
+        global variable, lock
+        lock.acquire()
+        for _ in range(10):
+            variable += 1
+            print(variable)
+        lock.release()
+
+
+    def lock_test_2():
+        global variable, lock
+        lock.acquire()
+        for i in range(10):
+            variable += 10
+            print(variable)
+        lock.release()
+
+
+    if __name__ == '__main__':
+        variable = 0
+        lock = Lock()
+        threads = []
+        t1 = Thread(target=lock_test_1)
+        t2 = Thread(target=lock_test_2)
+        threads.append(t1)
+        threads.append(t2)
+        for thread in threads:
+            thread.start()
+
+    # 运行结果永远是 1，2，3，4，5，6，7，8，9，10，20，30...
+    ```
+
+## 注意事项
+1.  假设AB两个线程，A没有释放锁，B想获取锁，A一直没有释放，B一直就在获取锁的状态，如果A一直不释放锁，就会导致 “死锁”。
+2.  with语句可以自动获取锁，在with代码块结束释放锁
+
+

@@ -237,7 +237,7 @@ categories: [Python]
 
 3. 注意事项  
     a. 假设AB两个线程，A没有释放锁，B想获取锁，A一直没有释放，B一直就在获取锁的状态，如果A一直不释放锁，就会导致 “死锁”。  
-    b. with语句可以自动获取锁，在with代码块结束释放锁
+    b. `with`语句可以自动获取锁，在`with`代码块结束会自动释放锁
 
     ```python
     from threading import Thread, Lock
@@ -246,4 +246,24 @@ categories: [Python]
     with lock:
         ...
     ```
+    c. 如果对已经释放的锁再次`release`，会引发`RuntimeError`
+    
+    ```python
+    from threading import Thread, Lock
 
+    lock = Lock()
+    lock.release()
+    
+    # Traceback (most recent call last):
+    # File "D:/OneDrive/PythonProject/Demos/test.py", line 5, in <module>
+    # lock.release()
+    # RuntimeError: release unlocked lock
+    ```
+
+4. 总结
+    a. 锁有两种状态，`locked`(被某个线程拿到)和`unlocked`状态(锁被释放可使用);  
+    b. 锁的操作方法是`acquire`和`release`;  
+    c. 如果状态是`unlocked`，调用`acquire`会将锁的状态改为`locked`;  
+    d. 如果状态是`unlocked`，调用`release`会导致`RuntimeError`;  
+    e. 如果状态是`locked`，调用`acquire`会导致`死锁`;  
+    f. 如果状态是`locked`，调用`release`会将锁的状态改为`unlocked`  

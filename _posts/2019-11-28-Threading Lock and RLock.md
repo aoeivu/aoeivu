@@ -1,6 +1,6 @@
 ---
 layout: mypost
-title: Theading
+title: Threading Lock and RLock
 categories: [Python]
 ---
 

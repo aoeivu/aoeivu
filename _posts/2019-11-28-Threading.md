@@ -72,7 +72,7 @@ categories: [Python]
 
     # 运行结果 1,2,3,4,5...hhh
     ```
-    a. 第一个子线程执行结束后第二个子线程继续执行
+    b. 第一个子线程执行结束后第二个子线程继续执行
 
     ```python
     import time
@@ -104,11 +104,11 @@ categories: [Python]
     ```
 
 4. setDamon(True)  
-setDamon值默认为False，当setDamon=True的时候，不管子线程有没有结束，只要主线程结束了，子线程就结束  
+    setDamon值默认为False，当setDamon=True的时候，不管子线程有没有结束，只要主线程结束了，子线程就结束  
 
-注意:  
-a. setDamon=True必须放在start()函数之前  
-b. setDamon=True既可以写t.setDamon(True),也可以Thread(target=count, daemon=True)  
+    注意:  
+    a. setDamon=True必须放在start()函数之前  
+    b. setDamon=True既可以写t.setDamon(True),也可以Thread(target=count, daemon=True)  
 
     ```python
     import time

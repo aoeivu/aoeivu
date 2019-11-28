@@ -48,7 +48,7 @@ categories: [Python]
     # 0,1,2,3...
     ```
 
-3. 关于thread.join()方法  
+3. thread.join()方法  
 阻塞当前线程，待当前线程结束后再往下执行  主线程或者另一个子线程  
 
    a. 子线程阻塞，待子线程结束之后，主线程继续执行
@@ -103,7 +103,7 @@ categories: [Python]
     # 运行结果0,1,2,3,4,5,6,7,8,9,10,9,8....
     ```
 
-4. setDamon(True)  
+4. threading.setDamon(True)  
     setDamon值默认为False，当setDamon=True的时候，不管子线程有没有结束，只要主线程结束了，子线程就结束  
 
     注意:  
@@ -130,7 +130,7 @@ categories: [Python]
         print('主线程结束，子线程结束')
     ```
 
-5. conclusion  
+5. threading conclusion  
 
     ```python
     t = Thread(target=func, args=(1, 2))  # func不可包含()，args为turple类型
@@ -160,7 +160,7 @@ categories: [Python]
     a. 在A中首先获取锁lock.acquire()，待A函数处理完成后lock.release()释放锁  
     b. B函数获取A函数释放的锁lock.acquire()，B函数使用完成后释放锁
 
-2. 示例  
+2. Lock示例  
     a. 没有使用锁
 
     ```python
@@ -235,7 +235,7 @@ categories: [Python]
     # 运行结果永远是 1，2，3，4，5，6，7，8，9，10，20，30...
     ```
 
-3. 注意事项  
+3. Lock注意事项  
     a. 假设AB两个线程，A没有释放锁，B想获取锁，A一直没有释放，B一直就在获取锁的状态，如果A一直不释放锁，就会导致 “死锁”。  
     b. `with`语句可以自动获取锁，在`with`代码块结束会自动释放锁
 
@@ -260,7 +260,7 @@ categories: [Python]
     # RuntimeError: release unlocked lock
     ```
 
-4. 总结  
+4. Lock总结  
     a. 锁有两种状态，`locked`(被某个线程拿到)和`unlocked`状态(锁被释放可使用);  
     b. 锁的操作方法是`acquire`和`release`;  
     c. 如果状态是`unlocked`，调用`acquire`会将锁的状态改为`locked`;  
@@ -268,7 +268,7 @@ categories: [Python]
     e. 如果状态是`locked`，调用`acquire`会导致`死锁`;  
     f. 如果状态是`locked`，调用`release`会将锁的状态改为`unlocked`  
 
-# RLocd()
+# RLocK()
 1. RLock简介  
    `RLock`在同一个线程中，首先获取锁，在此线程中需要再次使用锁的时候不会造成死锁  
    RLock和Lock具有同样的方法  
@@ -286,7 +286,7 @@ categories: [Python]
    b. 同一线程可以多次拿到该锁，即可以acquire多次；
    c. acquire多少次就必须release多少次，只有最后一次release才能改变RLock的状态为unlocked
 
-3. RLock示例
+3. RLock示例  
     a. 使用`Lock`会卡死
     
     ```python

@@ -143,7 +143,7 @@ categories: [Git]
 
     git push <本地branch> <远程banch>
 
-13. 至此一次bug修复提交到本地分支就完成了
+13. 至此一次bug修复提交到自己的远程分支就完成了
 
 # merge修改到fork的原分支
 1. 进入Git网页版本自己的分支，点击Creat Merge Request  

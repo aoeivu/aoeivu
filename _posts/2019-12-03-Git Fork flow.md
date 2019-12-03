@@ -155,9 +155,9 @@ categories: [Git]
 3. 上一步Change Branch点击后进入如下界面  
     本次是从自己的develop推送到fork分支的develop，所以如下选择，并点击Compare branches and continue  
     ![fork](https://github.com/aoeivu/aoeivu.github.io/blob/master/posts/2019/12/03/8.jpg?raw=true)
-4. 回到第二步界面检查信息无误点击Submit merge request即可通知Owner进行合并
+4. 等待自动回到第二步界面，检查信息无误，点击Submit merge request，通知Owner进行对比合并
 
-# fork的远程分支有修改，同步fork的远程分支
+# fork的远程分支有修改，同步最新的fork的远程分支到自己的本地和远程
 1.  添加远程仓库到本地remote分支
 ```
 git remote add upstream gitlab@192.168.10.95:5G-SDX55/Standard.git

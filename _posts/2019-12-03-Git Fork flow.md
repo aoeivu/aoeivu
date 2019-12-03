@@ -18,7 +18,7 @@ categories: [Git]
 1. 新建准备存放git文件的路径  
 例如: H:\10_Git\python
 2. 进入文件夹右击->点击Git Bash Here 
-3. 在弹出的Git窗口输入下面命令初始化该文件夹为
+3. 在弹出的Git窗口输入下面命令初始化该文件夹
 
     ```
     git init

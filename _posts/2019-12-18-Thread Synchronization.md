@@ -15,7 +15,7 @@ event.clear()  # 重置Event，使所有的Event都属于待命状态
 event.wait()  # 阻塞当前线程
 event.set()  # 中断当前线程，wait的线程继续运行
 ```
-> 注意：多个事件同时等待某个Event()事件发生，Event()事件发生后所有的线程都会被激活
+> 注意：多个事件同时等待某个Event()事件发生，Event()事件发生后所有的线程都会被激活。
 
 ### Event()的使用示例  
 ```python
@@ -45,7 +45,7 @@ if __name__ == '__main__':
 ```
 
 ## Queue  
-从一个线程网另外一个线程发送数据最安全的方式就是使用queue  
+从一个线程往另外一个线程发送数据最安全的方式就是使用queue  
 queue有两种方法：  
 ```python
 from queue import Queue

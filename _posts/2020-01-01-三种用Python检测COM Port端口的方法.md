@@ -1,6 +1,6 @@
 ---
 layout: mypost
-title: 三种检测COM Port方法
+title: 三种用Python检测COM Port端口的方法
 categories: [Python]
 ---
 
@@ -81,7 +81,7 @@ categories: [Python]
         pip install wmi
         ```  
         
-        >调用过程中可能出现缺少win32com组件，安装好pywim32后win32com会自动安装好  
+        >调用过程中可能出现缺少win32com组件，安装好pywim32后win32com会自动安装，
         安装方法参照[安装win32com或pywin32报错](http://aoeivu.github.io/posts/2019/12/31/%E5%AE%89%E8%A3%85win32com%E6%88%96pywin32%E6%8A%A5%E9%94%99.html)
     2. python实例  
     ```python

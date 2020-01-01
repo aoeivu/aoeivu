@@ -27,6 +27,7 @@ categories: [Python]
     ```
     python -m serial.tools.list_ports
     ```  
+    ![DOS](https://github.com/aoeivu/aoeivu.github.io/blob/master/posts/2020/01/01/1.jpg?raw=true)
 
 >注意：此方法可能在读取端口后，部分第三方程序调用查询到的端口可能存在端口占用的情况
 
@@ -67,7 +68,7 @@ categories: [Python]
     ```
     wmic PATH Win32_PnPEntity WHERE Name="USB Serial Port (COM5)"
     ```
-    ![DOS](https://github.com/aoeivu/aoeivu.github.io/blob/master/posts/2020/01/01/1.jpg?raw=true)
+    ![DOS](https://github.com/aoeivu/aoeivu.github.io/blob/master/posts/2020/01/01/2.jpg?raw=true)
     使用Python查询
     ```python
     import os

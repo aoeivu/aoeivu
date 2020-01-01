@@ -82,24 +82,24 @@ categories: [Python]
         ```  
         
         >调用过程中可能出现缺少win32com组件，安装好pywim32后win32com会自动安装，
-        安装方法参照[安装win32com或pywin32报错](http://aoeivu.github.io/posts/2019/12/31/%E5%AE%89%E8%A3%85win32com%E6%88%96pywin32%E6%8A%A5%E9%94%99.html)
+        安装方法参照[安装win32com或pywin32报错](http://aoeivu.github.io/posts/2019/12/31/%E5%AE%89%E8%A3%85win32com%E6%88%96pywin32%E6%8A%A5%E9%94%99.html)  
     2. python实例  
-    ```python
-    import re
-    import wmi
-    
-    query = "SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%(COM%)'"  # WQL
-    com_ports = wmi.WMI().query(query)
-    for com in com_ports:
-        com_name = com.Name
-        com_port = ''.join(re.findall(r'.*\((COM\d+)\).*', com_name))
-        print([com_name, com_port])
-    
-    # ['Quectel USB AT Port (COM4)', 'COM4']
-    # ['通信端口 (COM1)', 'COM1']
-    # ['Quectel USB DM Port (COM5)', 'COM5']
-    # ['USB Serial Port (COM10)', 'COM10']
-    # ['Quectel USB NMEA Port (COM6)', 'COM6']
-    ```  
+        ```python  
+        import re
+        import wmi
+        
+        query = "SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%(COM%)'"  # WQL
+        com_ports = wmi.WMI().query(query)
+        for com in com_ports:
+            com_name = com.Name
+            com_port = ''.join(re.findall(r'.*\((COM\d+)\).*', com_name))
+            print([com_name, com_port])
+        
+        # ['Quectel USB AT Port (COM4)', 'COM4']
+        # ['通信端口 (COM1)', 'COM1']
+        # ['Quectel USB DM Port (COM5)', 'COM5']
+        # ['USB Serial Port (COM10)', 'COM10']
+        # ['Quectel USB NMEA Port (COM6)', 'COM6']
+        ```  
     
 >Win32_PnPEntity WMI类表示即插即用设备的属性。 即插即用实体在“控制面板”中的“设备管理器”中显示为条目。

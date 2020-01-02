@@ -1,6 +1,6 @@
 ---
 layout: mypost
-title: 三种用Python检测COM Port端口的方法
+title: 用Python检测COM口的三种方法
 categories: [Python]
 ---
 

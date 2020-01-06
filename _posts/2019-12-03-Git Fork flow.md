@@ -51,12 +51,12 @@ categories: [Git]
     Checking out files: 100% (64/64), done.
    ```
 
-6. 关闭git进入刚才clone的文件夹，右键点击空白处，点击Git Bash Here，输入git branch -r
+6. 关闭git进入刚才clone的文件夹，右键点击空白处，点击Git Bash Here，输入
     
     ```
     git branch -r
     ```  
-      
+    返回如下信息  
     ```
     $ git branch -r
     origin/HEAD -> origin/master

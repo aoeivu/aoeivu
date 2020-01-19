@@ -84,7 +84,7 @@ categories: [Python]
         调用过程中可能出现缺少win32com组件，安装好pywim32后win32com会自动安装，
         安装方法参照[安装win32com或pywin32报错](http://aoeivu.github.io/posts/2019/12/31/%E5%AE%89%E8%A3%85win32com%E6%88%96pywin32%E6%8A%A5%E9%94%99.html)  
     2. python实例  
-        ```python  
+        ```python
         import re
         import wmi
         
@@ -100,6 +100,23 @@ categories: [Python]
         # ['Quectel USB DM Port (COM5)', 'COM5']
         # ['USB Serial Port (COM10)', 'COM10']
         # ['Quectel USB NMEA Port (COM6)', 'COM6']
+        ```  
+        **当需要在线程中调用wmi接口时，需要使用`pythoncom`模块进行初始化  
+        ```python
+        import pythoncom
+        
+        
+        def check_port():
+            pythoncom.CoInitialize()
+            port_name_list = []
+            wql = "SELECT * FROM Win32_PnPEntity WHERE Name LIKE '%(COM%)'"
+            com_ports = wmi.WMI().query(wql)
+            for com in com_ports:
+                port = ''.join(re.findall(r'.*\((COM\d+)\).*', com.Name))
+                if port != '':
+                    port_name_list.append(port)
+            pythoncom.CoUninitialize()
+            return port_name_list
         ```  
     
 >Win32_PnPEntity WMI类表示即插即用设备的属性。 即插即用实体在“控制面板”中的“设备管理器”中显示为条目。

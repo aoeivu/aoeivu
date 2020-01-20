@@ -1,6 +1,6 @@
 ---
 layout: mypost
-title: Thread Synchronization
+title: 多线程同步中Event和Queue
 categories: [Python]
 ---
 

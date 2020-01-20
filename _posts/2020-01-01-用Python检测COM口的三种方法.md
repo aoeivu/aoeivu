@@ -118,5 +118,30 @@ categories: [Python]
             pythoncom.CoUninitialize()
             return port_name_list
         ```  
-    
+       **部分通过wmi获取的参数可能需要同时匹配两个参数，例如获取modem口可以通过Win32_POTSModem  
+       仅仅通过modem口的Name属性可能获取到多个modem口，所以需要查询[官方文档](https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-potsmodem)  
+       在文档中发现`StatusInfo`属性描述了当前modem口的状态信息，3为端口正常状态  
+       ![StatusInfo](https://github.com/aoeivu/aoeivu.github.io/blob/master/posts/2020/01/01/3.jpg?raw=true)  
+       代码示例：  
+       ```python
+        import wmi
+        import re
+        
+        
+        def get_modem_port_num():
+            modem_port = ''
+            wmi_api = wmi.WMI()
+            sys_info_obj = wmi_api.Win32_POTSModem()
+            for i in sys_info_obj:
+                name_re = ''.join(re.findall(r'.*[M|m]odem.*', i.Name))
+                status_info = i.StatusInfo
+                if name_re and status_info == 3:
+                    modem_port = i.AttachedTo
+            if modem_port != '':
+                return modem_port
+        
+        
+        if __name__ == '__main__':
+            print(get_modem_port_num())
+        ```  
 >Win32_PnPEntity WMI类表示即插即用设备的属性。 即插即用实体在“控制面板”中的“设备管理器”中显示为条目。

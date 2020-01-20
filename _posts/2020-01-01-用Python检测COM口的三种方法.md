@@ -144,4 +144,6 @@ categories: [Python]
         if __name__ == '__main__':
             print(get_modem_port_num())
         ```  
+       
+
 >Win32_PnPEntity WMI类表示即插即用设备的属性。 即插即用实体在“控制面板”中的“设备管理器”中显示为条目。

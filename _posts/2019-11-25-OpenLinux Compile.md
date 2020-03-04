@@ -58,7 +58,7 @@ make aboot
 ```
 7. 此时在/ql-ol-sdk/target/目录下会有三个文件
 ```
-Abl.elf 类似于之前的bootloader
+Abl.elf 类似于之前的bootloader
 Sdxprairie-boot.img(boot.image)
 Sdxprairie-sysfs.ubi(sysfs.ubi)
 ```
